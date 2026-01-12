@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo } from "react";
 import * as THREE from "three";
 
@@ -13,7 +15,6 @@ export function StarField({ count = 2000, radius = 50 }: StarFieldProps) {
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
       
-      // Random spherical coordinates
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
       const r = radius;

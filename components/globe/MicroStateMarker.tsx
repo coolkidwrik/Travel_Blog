@@ -1,3 +1,5 @@
+'use client';
+
 import * as THREE from "three";
 import { latLngToSphere } from "./utils";
 import { COLORS } from "./constants";
@@ -8,14 +10,14 @@ type MicroStateMarkerProps = {
     lat: number;
     lng: number;
     color: string;
-    onSelect: () => void;
+    onSelectAction: () => void;
 };
 
 export function MicroStateMarker({
     lat,
     lng,
     color,
-    onSelect,
+    onSelectAction,
 }: MicroStateMarkerProps) {
     const borderCircleRadius = 0.007
     const innerCircleRadius = 0.006
@@ -34,7 +36,7 @@ export function MicroStateMarker({
         quaternion={quaternion}
         onClick={(e) => {
             e.stopPropagation();
-            onSelect();
+            onSelectAction();
         }}
         >
         {/* border */}

@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo } from "react";
 import * as THREE from "three";
 import { latLngToSphere, getCountryColor } from "./utils";
@@ -10,10 +12,10 @@ import worldGeoJson from "./world.geo.json";
 type GlobeProps = {
     countryColors: CountryColors;
     selectedCountry: SelectedCountry | null;
-    onCountrySelect: (country: SelectedCountry) => void;
+    onCountrySelectAction: (country: SelectedCountry) => void;
 };
 
-export function Globe({ countryColors, selectedCountry, onCountrySelect }: GlobeProps) {
+export function Globe({ countryColors, selectedCountry, onCountrySelectAction }: GlobeProps) {
     const { countryMeshes, borderGeometry } = useMemo(() => {
         const countryMeshes: {
             key: string;
@@ -111,7 +113,7 @@ export function Globe({ countryColors, selectedCountry, onCountrySelect }: Globe
             renderOrder={1}
             onClick={(e) => {
                 e.stopPropagation();
-                onCountrySelect({ id, name });
+                onCountrySelectAction({ id, name });
             }}
             >
             <meshBasicMaterial
@@ -135,7 +137,7 @@ export function Globe({ countryColors, selectedCountry, onCountrySelect }: Globe
             lat={data.lat}
             lng={data.lng}
             color={getCountryColor(id, selectedCountry, countryColors)}
-            onSelect={() => onCountrySelect({ id, name: data.name })}
+            onSelectAction={() => onCountrySelectAction({ id, name: data.name })}
             />
         ))}
 
@@ -150,7 +152,7 @@ export function Globe({ countryColors, selectedCountry, onCountrySelect }: Globe
             radius={data.radius}
             color={getCountryColor(id, selectedCountry, countryColors)}
             isSelected={id === selectedCountry?.id}
-            onSelect={() => onCountrySelect({ id, name: data.name })}
+            onSelectAction={() => onCountrySelectAction({ id, name: data.name })}
             />
         ))}
         </>

@@ -1,3 +1,5 @@
+'use client';
+
 import * as THREE from "three";
 import { latLngToSphere } from "./utils";
 
@@ -9,7 +11,7 @@ type IslandBlobProps = {
     radius: number;
     color: string;
     isSelected: boolean;
-    onSelect: () => void;
+    onSelectAction: () => void;
 };
 
 export function IslandBlobMarker({
@@ -17,7 +19,7 @@ export function IslandBlobMarker({
     lng,
     radius,
     color,
-    onSelect,
+    onSelectAction,
 }: IslandBlobProps) {
     const position = latLngToSphere(lat, lng, 1.035);
     const normal = position.clone().normalize();
@@ -33,7 +35,7 @@ export function IslandBlobMarker({
         quaternion={quaternion}
         onClick={(e) => {
             e.stopPropagation();
-            onSelect();
+            onSelectAction();
         }}
         >
             {/* Glow / halo */}

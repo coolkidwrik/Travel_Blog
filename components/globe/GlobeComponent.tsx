@@ -62,7 +62,7 @@ export default function GlobeComponent({ lived, visited, initialSelected }: Glob
                 <StarField count={2000} radius={15} />
                 <Globe
                 selectedCountry={selectedCountry}
-                onCountrySelect={handleCountrySelect}
+                onCountrySelectAction={handleCountrySelect}
                 countryColors={countryColors}
                 />
                 <OrbitControls
