@@ -1,24 +1,19 @@
-import Link from 'next/link';
+import SmoothScrollLink from './SmoothScrollLink';
 
 export default function Header() {
   return (
-    <header className="bg-gray-900 text-white py-4 sticky top-0 z-50">
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold">
-          <p className="mt-2">Under Construction</p>
-        </Link>
-        <nav className="flex gap-6">
-          <Link href="/" className="hover:text-gray-300 transition">
-            Home
-          </Link>
-          <Link href="/#globe" className="hover:text-gray-300 transition">
-            Explore
-          </Link>
-          <Link href="/about" className="hover:text-gray-300 transition">
-            About
-          </Link>
-        </nav>
-      </div>
+    <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-3 sm:py-4 flex justify-center sm:justify-end items-center bg-transparent text-white backdrop-blur-sm">
+      <nav className="flex flex-wrap justify-center sm:justify-end gap-4 sm:gap-8 text-base sm:text-lg font-medium">
+        <SmoothScrollLink href="/" targetId="hero">
+          Home
+        </SmoothScrollLink>
+        <SmoothScrollLink href="/" targetId="about">
+          About
+        </SmoothScrollLink>
+        <SmoothScrollLink href="/" targetId="globe">
+          Explore
+        </SmoothScrollLink>
+      </nav>
     </header>
   );
 }

@@ -41,6 +41,28 @@ export default function GlobeComponent({
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative', background: '#000' }}>
+      {/* UI Overlay */}
+      <div
+        style={{
+          position: "absolute",
+          top: 16,
+          right: 16,
+          padding: "10px 14px",
+          background: "rgba(0,0,0,0.6)",
+          color: "#fff",
+          borderRadius: 6,  
+          fontFamily: "sans-serif",
+          fontSize: 14,
+          pointerEvents: "none",
+          zIndex: 1
+        }}
+      >
+        <strong>Selected Country</strong>
+        <div style={{ marginTop: 4 }}>
+          {selectedCountry?.name ?? "None"}
+        </div>
+      </div>
+
       <Canvas
         camera={{ position: [0, 0, 3], fov: 45 }}
         gl={{ alpha: false }}

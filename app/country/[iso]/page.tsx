@@ -1,6 +1,7 @@
 import CountryContent from '@/components/country/CountryContent';
 import { getCountryData, getAllCountryCodes } from '@/data/countries';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 type Props = {
   params: Promise<{ iso: string }>;
@@ -35,7 +36,10 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for SEO
-export async function generateMetadata({ params }: { params: Promise<{ iso: string }> }) {
+// Next.js calls this AUTOMATICALLY during:
+//    - Build time (for static generation)
+//    - Request time (for dynamic routes)
+export async function generateMetadata({ params }: { params: Promise<{ iso: string }> }): Promise<Metadata> {
   const { iso } = await params;
   const countryData = getCountryData(iso);
   
@@ -46,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
   }
 
   return {
-    title: `${countryData.name} - Travel Chronicles`,
-    description: `${countryData.tagline}. ${countryData.trip.story.substring(0, 150)}...`,
+    title: '${countryData.name} - Travel Chronicles',
+    description: '${countryData.tagline}. ${countryData.trip.story.substring(0, 150)}...',
   };
 }
