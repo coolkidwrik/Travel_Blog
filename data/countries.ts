@@ -17,6 +17,37 @@ export type CountryData = {
   };
 };
 
+// Countries I've lived in
+///////////////////////////////////////////////////////////
+export const LIVED_COUNTRIES = ['IND', 'CAN', 'SGP'];
+
+// Countries I've visited
+///////////////////////////////////////////////////////////
+export const VISITED_COUNTRIES = [
+  'AUT', // Austria
+  'BHR', // Bahrain
+  'KHM', // Cambodia
+  'CHN', // China
+  'CZE', // Czechia
+  'HUN', // Hungary
+  'IDN', // Indonesia
+  'JPN', // Japan
+  'MYS', // Malaysia
+  'MDV', // Maldives
+  'NZL', // New Zealand
+  'PHL', // Philippines
+  'SVK', // Slovakia
+  'ZAF', // South Africa
+  'LKA', // Sri Lanka
+  'THA', // Thailand
+  'TUR', // Turkey
+  'ARE', // UAE
+  'USA', // United States
+  'VNM', // Vietnam
+  'ZMB', // Zambia
+  'ZWE', // Zimbabwe
+];
+
 // TODO: place holder data till I figure out Sanity backend setup
 const countryDatabase: Record<string, CountryData> = {
   jpn: {
@@ -69,4 +100,13 @@ export function getCountryData(code: string): CountryData | null {
 
 export function getAllCountryCodes(): string[] {
   return Object.keys(countryDatabase);
+}
+
+export function isVisitedCountry(code: string): boolean {
+  const upperCode = code.toUpperCase();
+  return VISITED_COUNTRIES.includes(upperCode) || LIVED_COUNTRIES.includes(upperCode);
+}
+
+export function hasCountryData(code: string): boolean {
+  return !!countryDatabase[code.toLowerCase()];
 }

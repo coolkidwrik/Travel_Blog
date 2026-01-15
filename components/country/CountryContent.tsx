@@ -8,9 +8,9 @@ type CountryContentProps = {
 
 export default function CountryContent({ countryData, initialTab }: CountryContentProps) {
   return (
-    <div className="bg-black">
+    <div className="bg-linear-to-t from-[#000726] via-black via-80% to-black">
       {/* Country Header */}
-      <section className="bg-linear-to-b from-black to-gray-900 py-12 border-t border-gray-800">
+      <section className="py-12 border-t border-gray-800">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl font-bold text-white mb-2">
             {countryData.name}
