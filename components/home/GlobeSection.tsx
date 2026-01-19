@@ -1,4 +1,5 @@
 import GlobeClient from '@/components/globe/GlobeClient';
+import { VISITED_COUNTRIES, LIVED_COUNTRIES } from '@/data/countries';
 
 export default function GlobeSection() {
   return (
@@ -15,12 +16,8 @@ export default function GlobeSection() {
       
       <div className="w-full h-150">
         <GlobeClient
-          lived={['IND', 'CAN', 'SGP']}
-          visited={[
-            'AUT', 'BHR', 'KHM', 'CHN', 'CZE', 'HUN', 'IDN', 'JPN',
-            'MYS', 'MDV', 'NZL', 'PHL', 'SVK', 'ZAF', 'LKA', 'THA',
-            'TUR', 'ARE', 'USA', 'VNM', 'ZMB', 'ZWE',
-          ]}
+          lived={LIVED_COUNTRIES}
+          visited={VISITED_COUNTRIES}
         />
       </div>
     </section>
