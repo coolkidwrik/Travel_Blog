@@ -1,7 +1,26 @@
+import Image from 'next/image';
+
 export default function Hero() {
   return (
-    <section className="bg-linear-to-b from-blue-900 to-gray-900 text-white py-20">
-      <div className="container mx-auto px-4 text-center">
+    <section id="hero" className="relative py-24 text-white overflow-hidden min-h-screen">
+      {/* Background Image */}
+      <Image
+        src="/images/pyramid_lake_h.webp"
+        alt="Hero background"
+        fill
+        className="object-cover"
+        priority
+        quality={100}
+      />
+      
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-linear-to-b from-black/0 via-black/5 to-black"></div>
+
+      {/* Blur overlay */} {/* I'm on the fence about using this */}
+      {/* <div className="absolute inset-0 backdrop-blur-xs"></div> */}
+      
+      {/* Content */}
+      <div className="relative z-20 container mx-auto px-4 text-center">
         <h1 className="text-6xl font-bold mb-6">
           Welcome to My Travel Journey
         </h1>

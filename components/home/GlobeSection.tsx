@@ -2,7 +2,7 @@ import GlobeClient from '@/components/globe/GlobeClient';
 
 export default function GlobeSection() {
   return (
-    <section id="globe" className="py-20 bg-linear-to-b from-gray-900 to-black">
+    <section id="globe" className="py-20 bg-black">
       <div className="container mx-auto px-4 text-center mb-8">
         <h2 className="text-4xl font-bold text-white mb-4">
           My Travel Journey

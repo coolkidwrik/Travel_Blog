@@ -7,7 +7,9 @@ import { useRouter } from 'next/navigation';
 import { Globe } from './Globe';
 import { StarField } from './StarField';
 import { buildCountryColors } from './utils';
+import { COLORS } from './constants';
 import type { SelectedCountry } from './types';
+import { blur } from 'three/tsl';
 
 type GlobeComponentProps = {
   lived: string[];
@@ -29,7 +31,7 @@ export default function GlobeComponent({
   const handleCountrySelect = (country: SelectedCountry) => {
     setSelectedCountry(country);
     
-    // Navigate using Next.js router (maintains layout)
+    // Navigate using Next.js router
     router.push(`/country/${country.id.toLowerCase()}`);
     
     // Scroll to content after navigation
@@ -41,25 +43,100 @@ export default function GlobeComponent({
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative', background: '#000' }}>
-      {/* UI Overlay */}
+      {/* Selected Country Overlay - Top Right */}
       <div
         style={{
           position: "absolute",
           top: 16,
           right: 16,
           padding: "10px 14px",
-          background: "rgba(0,0,0,0.6)",
+          background: "rgba(0,0,0,0.4)",
           color: "#fff",
           borderRadius: 6,  
           fontFamily: "sans-serif",
           fontSize: 14,
           pointerEvents: "none",
-          zIndex: 1
+          zIndex: 1,
         }}
       >
         <strong>Selected Country</strong>
         <div style={{ marginTop: 4 }}>
           {selectedCountry?.name ?? "None"}
+        </div>
+      </div>
+
+      {/* Legend Overlay - Bottom Right */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 16,
+          right: 16,
+          padding: "12px 16px",
+          background: "rgba(0,0,0,0.4)",
+          color: "#fff",
+          borderRadius: 6,
+          fontFamily: "sans-serif",
+          fontSize: 13,
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      >
+        <div style={{ fontWeight: "bold", marginBottom: 8 }}>Legend</div>
+        
+        {/* Lived */}
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+          <div
+            style={{
+              width: 12,
+              height: 12,
+              borderRadius: "50%",
+              background: COLORS.LIVED,
+              flexShrink: 0,
+            }}
+          />
+          <span>Lived</span>
+        </div>
+
+        {/* Visited */}
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+          <div
+            style={{
+              width: 12,
+              height: 12,
+              borderRadius: "50%",
+              background: COLORS.VISITED,
+              flexShrink: 0,
+            }}
+          />
+          <span>Visited</span>
+        </div>
+
+        {/* Selected */}
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+          <div
+            style={{
+              width: 12,
+              height: 12,
+              borderRadius: "50%",
+              background: COLORS.SELECTED,
+              flexShrink: 0,
+            }}
+          />
+          <span>Selected</span>
+        </div>
+
+        {/* Unvisited */}
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div
+            style={{
+              width: 12,
+              height: 12,
+              borderRadius: "50%",
+              background: COLORS.UNSELECTED,
+              flexShrink: 0,
+            }}
+          />
+          <span>Not Visited</span>
         </div>
       </div>
 
