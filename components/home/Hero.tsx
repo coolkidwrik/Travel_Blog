@@ -17,7 +17,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-linear-to-b from-black/0 via-black/5 to-black"></div>
 
       {/* Blur overlay */} {/* I'm on the fence about using this */}
-      {/* <div className="absolute inset-0 backdrop-blur-xs"></div> */}
+      <div className="absolute inset-0 backdrop-blur-xs"></div>
       
       {/* Content */}
       <div className="relative z-20 container mx-auto px-4 text-center">

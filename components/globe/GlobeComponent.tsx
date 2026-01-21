@@ -9,7 +9,6 @@ import { StarField } from './StarField';
 import { buildCountryColors } from './utils';
 import { COLORS } from './constants';
 import type { SelectedCountry } from './types';
-import { blur } from 'three/tsl';
 
 type GlobeComponentProps = {
   lived: string[];
@@ -35,10 +34,11 @@ export default function GlobeComponent({
     router.push(`/country/${country.id.toLowerCase()}`);
     
     // Scroll to content after navigation
-    setTimeout(() => {
-      const content = document.querySelector('main');
-      content?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
+    // optional. also annoying if you only want to look at the pretty globe
+    // setTimeout(() => {
+    //   const content = document.querySelector('main');
+    //   content?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // }, 100);
   };
 
   return (
