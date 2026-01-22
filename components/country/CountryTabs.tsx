@@ -23,13 +23,15 @@ export default function CountryTabs({ countryData, initialTab }: CountryTabsProp
   };
 
   return (
-    <section className="py-8 bg-gray-900">
+    <section className="py-8">
       <div className="container mx-auto px-4">
         <Tabs activeTab={activeTab} onTabChangeAction={handleTabChange} />
         
         <div className="mt-8">
           {activeTab === 'trip' && <TripContent data={countryData.trip} />}
-          {activeTab === 'gallery' && <GalleryContent data={countryData.gallery} />}
+          {activeTab === 'gallery' && (
+            <GalleryContent data={{ images: countryData.gallery }} />
+          )}
         </div>
       </div>
     </section>

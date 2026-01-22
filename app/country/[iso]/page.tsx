@@ -18,8 +18,8 @@ export default async function CountryPage({ params, searchParams }: Props) {
     notFound(); // Show "Haven't Been Here Yet" page
   }
 
-  // Check if data exists for this country
-  const countryData = getCountryData(iso);
+  // Check if data exists for this country in Sanity
+  const countryData = await getCountryData(iso);
   
   if (!countryData) {
     // Visited but no data yet - show "Under Construction"
@@ -37,7 +37,7 @@ export default async function CountryPage({ params, searchParams }: Props) {
 }
 
 export async function generateStaticParams() {
-  const codes = getAllCountryCodes();
+  const codes = await getAllCountryCodes(); // FIXED: Added await
   return codes.map((code) => ({
     iso: code.toLowerCase(),
   }));
@@ -45,7 +45,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ iso: string }> }): Promise<Metadata> {
   const { iso } = await params;
-  const countryData = getCountryData(iso);
+  const countryData = await getCountryData(iso);
   
   if (!countryData) {
     return {
@@ -55,6 +55,6 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
 
   return {
     title: `${countryData.name} - Travel Chronicles`,
-    description: `${countryData.tagline}. ${countryData.trip.story.substring(0, 150)}...`,
+    description: `${countryData.tagline}. ${countryData.trip.content?.[0]?.type === 'text' ? countryData.trip.content[0].text.substring(0, 150) : ''}...`,
   };
 }
