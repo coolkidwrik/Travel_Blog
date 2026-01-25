@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { urlFor } from '@/lib/sanity/client';
 import type { TripContentBlock } from '@/data/countries';
 
 type TripData = {
@@ -54,19 +55,25 @@ export default function TripContent({ data }: TripContentProps) {
             }
             
             if (block.type === 'image') {
+              // Use Sanity's URL builder for optimized images (same size as gallery)
+              const imageSrc = block._rawImage 
+                ? urlFor(block._rawImage).width(800).height(600).url()
+                : block.url;
+
               return (
-                <div key={index} className="my-8">
-                  <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-xl">
+                <div key={index} className="my-8 max-w-2xl mx-auto">
+                  <div className="relative w-full aspect-4/3 rounded-lg overflow-hidden shadow-xl">
                     <Image
-                      src={block.url}
+                      src={imageSrc || block.url}
                       alt={block.alt}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 900px"
+                      sizes="(max-width: 768px) 100vw, 700px"
+                      loading="lazy"
                     />
                   </div>
                   {block.caption && (
-                    <p className="text-gray-400 text-sm mt-3 italic text-center">
+                    <p className="text-gray-200 text-base mt-4 text-center font-medium">
                       {block.caption}
                     </p>
                   )}

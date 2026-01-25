@@ -31,6 +31,7 @@ export async function getCountryByCode(code: string) {
           _type == 'imageBlock' => {
             "type": "image",
             "url": image.asset->url,
+            "_rawImage": image,
             caption,
             alt
           }

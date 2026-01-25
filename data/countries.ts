@@ -7,7 +7,7 @@ import {
 
 export type TripContentBlock = 
   | { type: 'text'; text: string }
-  | { type: 'image'; url: string; caption: string; alt: string }
+  | { type: 'image'; url: string; caption: string; alt: string; _rawImage?: any }
 
 export type CountryData = {
   code: string
@@ -24,9 +24,9 @@ export type CountryData = {
     url: string
     caption: string
     alt: string
+    _rawImage?: any
   }>
 }
-
 
 
 // Countries I've lived in
