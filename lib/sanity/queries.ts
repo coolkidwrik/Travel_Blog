@@ -38,6 +38,7 @@ export async function getCountryByCode(code: string) {
       },
       "gallery": gallery[] {
         "url": image.asset->url,
+        "_rawImage": image,
         caption,
         alt,
         "metadata": image.asset->metadata

@@ -4,7 +4,7 @@ import { VISITED_COUNTRIES, LIVED_COUNTRIES } from '@/data/countries';
 
 export default function GlobeSection() {
   return (
-    <section id="about" className="pt-40 pb-10 bg-black">
+    <section id="about" className="pt-40 bg-black">
       {/* About Me Section */}
       <div className="container mx-auto px-4 mb-16">
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
@@ -23,7 +23,7 @@ export default function GlobeSection() {
               serene backwaters of India, each journey has shaped my perspective and enriched my life in countless ways.
             </p>
             <p className="text-gray-300 text-lg leading-relaxed">
-              This globe represents my journey so far – the orange dots mark places I've called home, the green ones 
+              This globe represents my journey so far - the orange dots mark places I've called home, the green ones 
               show countries I've explored, and there are still so many destinations waiting to be discovered. 
               Join me as I continue to explore this beautiful world!
             </p>
