@@ -37,7 +37,7 @@ export default async function CountryPage({ params, searchParams }: Props) {
 }
 
 export async function generateStaticParams() {
-  const codes = await getAllCountryCodes(); // FIXED: Added await
+  const codes = await getAllCountryCodes();
   return codes.map((code) => ({
     iso: code.toLowerCase(),
   }));
@@ -50,11 +50,84 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
   if (!countryData) {
     return {
       title: 'Country - Travel Chronicles',
+      description: 'Explore travel stories and experiences from around the world.',
     };
   }
 
+  // Extract text from first content block for description
+  const firstTextBlock = countryData.trip.content?.find(block => block.type === 'text');
+  const description = firstTextBlock 
+    ? `${countryData.tagline}. ${firstTextBlock.text.substring(0, 150)}...`
+    : `${countryData.tagline}. Explore my travel experiences in ${countryData.name}.`;
+
+  // Get featured image for social sharing
+  const ogImage = countryData.featuredImage || '/images/default-og-image.jpg';
+
   return {
+    // Basic metadata
     title: `${countryData.name} - Travel Chronicles`,
-    description: `${countryData.tagline}. ${countryData.trip.content?.[0]?.type === 'text' ? countryData.trip.content[0].text.substring(0, 150) : ''}...`,
+    description: description,
+    
+    // Keywords for SEO
+    keywords: [
+      countryData.name,
+      'travel',
+      'travel blog',
+      'travel photography',
+      'travel experiences',
+      `${countryData.name} travel`,
+      `visit ${countryData.name}`,
+      'world travel',
+    ],
+
+    // Author info
+    authors: [{ name: 'Wrik Steven Sen' }],
+    
+    // Open Graph (Facebook, LinkedIn)
+    openGraph: {
+      title: `${countryData.name} - Travel Chronicles`,
+      description: description,
+      url: `https://your-site.vercel.app/country/${iso}`,
+      siteName: 'Travel Chronicles',
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${countryData.name} - ${countryData.tagline}`,
+        },
+      ],
+      locale: 'en_US',
+      type: 'article',
+    },
+
+    // Twitter Card
+    twitter: {
+      card: 'summary_large_image',
+      title: `${countryData.name} - Travel Chronicles`,
+      description: description,
+      images: [ogImage],
+      creator: '@yourtwitterhandle', // Add your Twitter handle
+    },
+
+    // Additional metadata
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+
+    // Alternate languages (if you add translations later)
+    // alternates: {
+    //   canonical: `https://your-site.vercel.app/country/${iso}`,
+    //   languages: {
+    //     'en-US': `https://your-site.vercel.app/country/${iso}`,
+    //   },
+    // },
   };
 }

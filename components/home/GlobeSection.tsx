@@ -7,25 +7,33 @@ export default function GlobeSection() {
     <section id="about" className="pt-40 bg-black">
       {/* About Me Section */}
       <div className="container mx-auto px-4 mb-16">
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 items-center max-w-6xl mx-auto">
           {/* Left: About Text */}
           <div className="text-left space-y-4">
             <h2 className="text-4xl font-bold text-white mb-6">
               About Me
             </h2>
             <p className="text-gray-300 text-lg leading-relaxed">
-              I'm a passionate traveler who believes that the world is a book, and those who don't travel read only one page. 
-              Over the years, I've been fortunate enough to explore diverse cultures, taste exotic cuisines, and witness 
-              breathtaking landscapes across multiple continents.
+              Hi, I'm Wrik - a traveler at heart with a deep love for discovering new places, 
+              unfamiliar cultures, and stories that live far beyond guidebooks and Instagram pins.
             </p>
             <p className="text-gray-300 text-lg leading-relaxed">
-              From living in the vibrant cities of Singapore and Canada to exploring the ancient temples of Japan and the 
-              serene backwaters of India, each journey has shaped my perspective and enriched my life in countless ways.
+              My love for travel wasn't a sudden discovery; it was inherited. 
+              My parents were always chasing new places, and my sister and I were often dragged along - 
+              usually away from our comfortable rooms and into journeys we didn't yet know how to appreciate. 
+              Somewhere between long drives and unfamiliar destinations, reluctance turned into curiosity, 
+              and curiosity into something that stuck.
             </p>
             <p className="text-gray-300 text-lg leading-relaxed">
-              This globe represents my journey so far - the orange dots mark places I've called home, the green ones 
-              show countries I've explored, and there are still so many destinations waiting to be discovered. 
-              Join me as I continue to explore this beautiful world!
+              Since then, I've explored the vibrant streets of Southeast Asia, 
+              the calm landscapes of New Zealand, and the historic cities of Europe. 
+              Having lived in India, Singapore, and now Canada, I've learned to experience places not just as a visitor, 
+              but by trying to live within them.
+            </p>
+            <p className="text-gray-300 text-lg leading-relaxed">
+              This blog is a collection of those journeys: the roads less traveled, 
+              the quiet moments between destinations, and the lessons learned along the way. 
+              It's about curiosity over checklists, presence over pace, and making the most of wherever you happen to land.
             </p>
           </div>
 
