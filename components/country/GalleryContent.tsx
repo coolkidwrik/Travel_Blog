@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity/client';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -21,17 +21,65 @@ type GalleryContentProps = {
 export default function GalleryContent({ data }: GalleryContentProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState<Set<number>>(new Set());
+  const [highResLoaded, setHighResLoaded] = useState<Set<number>>(new Set());
+
+  // Preload adjacent images when lightbox opens or image changes
+  useEffect(() => {
+    if (!lightboxOpen) return;
+
+    const preloadImage = (index: number) => {
+      if (imagesLoaded.has(index)) return;
+
+      const image = data.images[index];
+      if (!image) return;
+
+      // Preload medium-res first (faster)
+      const mediumSrc = image._rawImage
+        ? urlFor(image._rawImage).width(1200).height(900).url()
+        : image.url;
+
+      const img = new window.Image();
+      img.src = mediumSrc || image.url;
+      img.onload = () => {
+        setImagesLoaded(prev => new Set(prev).add(index));
+        
+        // Then preload high-res in background
+        if (image._rawImage) {
+          const highSrc = urlFor(image._rawImage).width(1920).height(1080).url();
+          const highImg = new window.Image();
+          highImg.src = highSrc || image.url;
+          highImg.onload = () => {
+            setHighResLoaded(prev => new Set(prev).add(index));
+          };
+        }
+      };
+    };
+
+    // Preload current image (priority)
+    preloadImage(currentImageIndex);
+
+    // Small delay before preloading adjacent (prioritize current)
+    const timeoutId = setTimeout(() => {
+      const nextIndex = (currentImageIndex + 1) % data.images.length;
+      preloadImage(nextIndex);
+
+      const prevIndex = currentImageIndex === 0 ? data.images.length - 1 : currentImageIndex - 1;
+      preloadImage(prevIndex);
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+
+  }, [lightboxOpen, currentImageIndex, data.images, imagesLoaded]);
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
     setLightboxOpen(true);
-    // Prevent body scroll when lightbox is open
     document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
     setLightboxOpen(false);
-    // Re-enable body scroll
     document.body.style.overflow = 'unset';
   };
 
@@ -43,7 +91,6 @@ export default function GalleryContent({ data }: GalleryContentProps) {
     setCurrentImageIndex((prev) => (prev === data.images.length - 1 ? 0 : prev + 1));
   };
 
-  // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowLeft') goToPrevious();
     if (e.key === 'ArrowRight') goToNext();
@@ -51,9 +98,17 @@ export default function GalleryContent({ data }: GalleryContentProps) {
   };
 
   const currentImage = data.images[currentImageIndex];
+  
+  // Use high-res if loaded, otherwise medium-res
+  const isHighResAvailable = highResLoaded.has(currentImageIndex);
   const currentImageSrc = currentImage?._rawImage
-    ? urlFor(currentImage._rawImage).width(1920).height(1080).url()
+    ? urlFor(currentImage._rawImage)
+        .width(isHighResAvailable ? 1920 : 1200)
+        .height(isHighResAvailable ? 1080 : 900)
+        .url()
     : currentImage?.url;
+
+  const isCurrentImageLoaded = imagesLoaded.has(currentImageIndex);
 
   return (
     <>
@@ -91,7 +146,7 @@ export default function GalleryContent({ data }: GalleryContentProps) {
       {/* Lightbox Modal */}
       {lightboxOpen && currentImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
           onClick={closeLightbox}
           onKeyDown={handleKeyDown}
           tabIndex={0}
@@ -136,14 +191,26 @@ export default function GalleryContent({ data }: GalleryContentProps) {
             className="relative max-w-7xl max-h-[90vh] w-full mx-4"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Loading Spinner */}
+            {!isCurrentImageLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
+              </div>
+            )}
+
             <div className="relative w-full h-full">
               <Image
                 src={currentImageSrc || currentImage.url}
                 alt={currentImage.alt}
-                width={1920}
-                height={1080}
-                className="w-full h-full object-contain"
+                width={isHighResAvailable ? 1920 : 1200}
+                height={isHighResAvailable ? 1080 : 900}
+                className={`w-full h-full object-contain transition-opacity duration-300 ${
+                  isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
                 priority
+                onLoad={() => {
+                  setImagesLoaded(prev => new Set(prev).add(currentImageIndex));
+                }}
               />
             </div>
 
