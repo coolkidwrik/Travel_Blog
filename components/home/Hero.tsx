@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative py-24 text-white overflow-hidden min-h-screen">
+    <section id="hero" className="relative pt-60 pb-24 text-white overflow-hidden min-h-screen">
       {/* Background Image */}
       <Image
         src="/images/pyramid_lake_h.webp"

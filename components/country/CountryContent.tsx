@@ -1,4 +1,4 @@
-import Image from 'next/image';  // ← ADDED
+import Image from 'next/image';  
 import CountryTabs from './CountryTabs';
 import type { CountryData } from '@/data/countries';
 
@@ -10,7 +10,7 @@ type CountryContentProps = {
 export default function CountryContent({ countryData, initialTab }: CountryContentProps) {
   return (
     <div className="bg-linear-to-t from-[#000726] via-black via-80% to-black">
-      {/* Featured Image Hero */}  {/* ← ADDED THIS SECTION */}
+      {/* Featured Image Hero */} 
       {countryData.featuredImage && (
         <section className="relative h-96 w-full overflow-hidden border-t border-gray-800">
           <Image
