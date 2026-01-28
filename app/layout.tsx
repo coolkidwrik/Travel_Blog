@@ -11,8 +11,8 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   // Basic info
   title: {
-    default: 'Travel Chronicles - Exploring the World',
-    template: '%s | Travel Chronicles', // For pages that set their own title
+    default: "C.K.Wrik's Travel Blog - Exploring the World",
+    template: "%s | C.K.Wrik's Travel Blog", // For pages that set their own title
   },
   description: 'Join me on my journey across the globe. Explore travel stories, photos, and experiences from countries around the world.',
   
@@ -25,26 +25,27 @@ export const metadata: Metadata = {
     'travel stories',
     'backpacking',
     'adventure travel',
+    "C.K.Wrik's Travel Blog",
   ],
 
   // Author
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
+  authors: [{ name: 'Wrik Steven Sen' }],
+  creator: 'Wrik Steven Sen',
 
   // Open Graph
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://your-site.vercel.app',
-    siteName: 'Travel Chronicles',
-    title: 'Travel Chronicles - Exploring the World',
+    url: 'https://ckwrik-travel.vercel.app',
+    siteName: "C.K.Wrik's Travel Blog",
+    title: "C.K.Wrik's Travel Blog - Exploring the World",
     description: 'Join me on my journey across the globe. Explore travel stories, photos, and experiences from countries around the world.',
     images: [
       {
         url: '/images/og-image.jpg', // Create a default Open Graph image
         width: 1200,
         height: 630,
-        alt: 'Travel Chronicles',
+        alt: "C.K.Wrik's Travel Blog",
       },
     ],
   },
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
   // Twitter
   twitter: {
     card: 'summary_large_image',
-    title: 'Travel Chronicles - Exploring the World',
+    title: "C.K.Wrik's Travel Blog - Exploring the World",
     description: 'Join me on my journey across the globe.',
     creator: '@yourtwitterhandle',
     images: ['/images/og-image.jpg'],

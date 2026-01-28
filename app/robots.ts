@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://your-site.vercel.app/sitemap.xml',
+    sitemap: 'https://ckwrik-travel.vercel.app/sitemap.xml',
   }
 }

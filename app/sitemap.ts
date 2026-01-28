@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getAllCountryCodes } from '@/data/countries'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://your-site.vercel.app'
+  const baseUrl = 'https://ckwrik-travel.vercel.app'
   
   // Get all country codes
   const countryCodes = await getAllCountryCodes()

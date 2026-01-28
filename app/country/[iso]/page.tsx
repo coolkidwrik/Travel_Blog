@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
   
   if (!countryData) {
     return {
-      title: 'Country - Travel Chronicles',
+      title: "Country - C.K.Wrik's Travel Blog",
       description: 'Explore travel stories and experiences from around the world.',
     };
   }
@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
 
   return {
     // Basic metadata
-    title: `${countryData.name} - Travel Chronicles`,
+    title: `${countryData.name} - C.K.Wrik's Travel Blog`,
     description: description,
     
     // Keywords for SEO
@@ -78,6 +78,7 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
       `${countryData.name} travel`,
       `visit ${countryData.name}`,
       'world travel',
+      "C.K.Wrik's Travel Blog",
     ],
 
     // Author info
@@ -85,10 +86,10 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
     
     // Open Graph (Facebook, LinkedIn)
     openGraph: {
-      title: `${countryData.name} - Travel Chronicles`,
+      title: `${countryData.name} - C.K.Wrik's Travel Blog`,
       description: description,
-      url: `https://your-site.vercel.app/country/${iso}`,
-      siteName: 'Travel Chronicles',
+      url: `https://ckwrik-travel.vercel.app/country/${iso}`,
+      siteName: "C.K.Wrik's Travel Blog",
       images: [
         {
           url: ogImage,
@@ -104,7 +105,7 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
     // Twitter Card
     twitter: {
       card: 'summary_large_image',
-      title: `${countryData.name} - Travel Chronicles`,
+      title: `${countryData.name} - C.K.Wrik's Travel Blog`,
       description: description,
       images: [ogImage],
       creator: '@yourtwitterhandle', // Add your Twitter handle
@@ -124,9 +125,9 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
 
     // Alternate languages (if you add translations later)
     // alternates: {
-    //   canonical: `https://your-site.vercel.app/country/${iso}`,
+    //   canonical: `https://ckwrik-travel.vercel.app/country/${iso}`,
     //   languages: {
-    //     'en-US': `https://your-site.vercel.app/country/${iso}`,
+    //     'en-US': `https://ckwrik-travel.vercel.app/country/${iso}`,
     //   },
     // },
   };
