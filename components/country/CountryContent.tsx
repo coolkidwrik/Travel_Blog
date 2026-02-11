@@ -1,6 +1,7 @@
 import Image from 'next/image';  
 import CountryTabs from './CountryTabs';
 import type { CountryData } from '@/data/countries';
+import { urlFor } from '@/lib/sanity/client';
 
 type CountryContentProps = {
   countryData: CountryData;
@@ -14,7 +15,11 @@ export default function CountryContent({ countryData, initialTab }: CountryConte
       {countryData.featuredImage && (
         <section className="relative h-96 w-full overflow-hidden border-t border-gray-800">
           <Image
-            src={countryData.featuredImage}
+            src={urlFor(countryData.featuredImage)
+              .width(2000)
+              .height(800)
+              .fit('crop')
+              .url()}
             alt={`${countryData.name} featured image`}
             fill
             className="object-cover"

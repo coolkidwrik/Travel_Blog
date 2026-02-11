@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   
   // Keywords
   keywords: [
+    "C.K.Wrik's Travel Blog",
+    "C.K.Wrik",
     'travel blog',
     'world travel',
     'travel photography',
@@ -25,7 +27,6 @@ export const metadata: Metadata = {
     'travel stories',
     'backpacking',
     'adventure travel',
-    "C.K.Wrik's Travel Blog",
   ],
 
   // Author

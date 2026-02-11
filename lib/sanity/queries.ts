@@ -6,7 +6,7 @@ export async function getAllCountries() {
       code,
       name,
       status,
-      "featuredImage": featuredImage.asset->url
+      featuredImage
     }
   `)
 }
@@ -44,7 +44,7 @@ export async function getCountryByCode(code: string) {
         alt,
         "metadata": image.asset->metadata
       },
-      "featuredImage": featuredImage.asset->url
+      featuredImage
     }
   `,
     { code }
