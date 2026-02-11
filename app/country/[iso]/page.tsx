@@ -70,6 +70,8 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
     
     // Keywords for SEO
     keywords: [
+      "C.K.Wrik's Travel Blog",
+      "C.K.Wrik",
       countryData.name,
       'travel',
       'travel blog',
@@ -78,7 +80,6 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
       `${countryData.name} travel`,
       `visit ${countryData.name}`,
       'world travel',
-      "C.K.Wrik's Travel Blog",
     ],
 
     // Author info
