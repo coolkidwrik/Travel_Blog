@@ -104,7 +104,7 @@ export default function GalleryContent({ data }: GalleryContentProps) {
   const currentImageSrc = currentImage?._rawImage
     ? urlFor(currentImage._rawImage)
         .width(isHighResAvailable ? 1920 : 1200)
-        .height(isHighResAvailable ? 1080 : 900)
+        // .height(isHighResAvailable ? 1080 : 900)
         .url()
     : currentImage?.url;
 
@@ -198,19 +198,16 @@ export default function GalleryContent({ data }: GalleryContentProps) {
               </div>
             )}
 
-            <div className="relative w-full h-full">
+            <div className="flex items-center justify-center">
               <Image
                 src={currentImageSrc || currentImage.url}
                 alt={currentImage.alt}
                 width={isHighResAvailable ? 1920 : 1200}
                 height={isHighResAvailable ? 1080 : 900}
-                className={`w-full h-full object-contain transition-opacity duration-300 ${
+                className={`max-h-[90vh] max-w-[95vw] w-auto h-auto object-contain transition-opacity duration-300 ${
                   isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'
                 }`}
                 priority
-                onLoad={() => {
-                  setImagesLoaded(prev => new Set(prev).add(currentImageIndex));
-                }}
               />
             </div>
 

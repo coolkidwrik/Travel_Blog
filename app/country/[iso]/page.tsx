@@ -3,6 +3,7 @@ import CountryContent from '@/components/country/CountryContent';
 import UnderConstruction from '@/components/country/UnderConstruction';
 import { getCountryData, getAllCountryCodes, isVisitedCountry } from '@/data/countries';
 import { notFound } from 'next/navigation';
+import { urlFor } from '@/lib/sanity/client';
 
 type Props = {
   params: Promise<{ iso: string }>;
@@ -61,7 +62,13 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
     : `${countryData.tagline}. Explore my travel experiences in ${countryData.name}.`;
 
   // Get featured image for social sharing
-  const ogImage = countryData.featuredImage || '/images/default-og-image.jpg';
+  const ogImage = countryData.featuredImage
+    ? urlFor(countryData.featuredImage)
+        .width(1200)
+        .height(630)
+        .fit('crop')
+        .url()
+    : '/images/default-og-image.jpg';
 
   return {
     // Basic metadata

@@ -5,6 +5,8 @@ import {
   countryExists 
 } from '@/lib/sanity/queries'
 
+// import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+
 export type TripContentBlock = 
   | { type: 'text'; text: string }
   | { type: 'image'; url: string; caption: string; alt: string; _rawImage?: any }
@@ -13,7 +15,7 @@ export type CountryData = {
   code: string
   name: string
   tagline: string
-  featuredImage?: string
+  featuredImage?: any // SanityImageSource
   trip: {
     date: string
     duration: string
@@ -24,7 +26,7 @@ export type CountryData = {
     url: string
     caption: string
     alt: string
-    _rawImage?: any
+    _rawImage?: any // SanityImageSource
   }>
 }
 
