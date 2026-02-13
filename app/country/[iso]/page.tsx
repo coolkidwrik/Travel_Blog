@@ -116,7 +116,7 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
       title: `${countryData.name} - C.K.Wrik's Travel Blog`,
       description: description,
       images: [ogImage],
-      creator: '@yourtwitterhandle', // Add your Twitter handle
+      creator: '@sen_wrik', // Add your Twitter handle
     },
 
     // Additional metadata
