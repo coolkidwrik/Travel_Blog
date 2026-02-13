@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     description: 'Join me on my journey across the globe. Explore travel stories, photos, and experiences from countries around the world.',
     images: [
       {
-        url: '/images/og-image.jpg', // Create a default Open Graph image
+        url: '/images/open_graph.jpg',
         width: 1200,
         height: 630,
         alt: "C.K.Wrik's Travel Blog",
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "C.K.Wrik's Travel Blog - Exploring the World",
     description: 'Join me on my journey across the globe.',
-    creator: '@yourtwitterhandle',
-    images: ['/images/og-image.jpg'],
+    creator: '@sen_wrik',
+    images: ['/images/open_graph.jpg'],
   },
 
   // Robots
