@@ -38,13 +38,13 @@ export default function GlobeSection() {
           </div>
 
           {/* Right: Profile Picture */}
-          <div className="flex justify-center md:justify-end">
-            <div className="relative w-100 h-100 rounded-full overflow-hidden">
+          <div className="flex justify-center md:justify-end items-center">
+            <div className="relative w-90 h-90 md:w-100 md:h-100 lg:w-100 lg:h-100 rounded-full overflow-hidden">
               <Image
                 src="/images/pfp.webp"
                 alt="Profile picture"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 320px"
               />
             </div>
