@@ -5,11 +5,45 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Prevent horizontal overflow and ensure responsive elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img, picture, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Scroll-capture edges for globe component */
+.globe-scroll-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 256px;
+  z-index: 2;
+  background: transparent;
+  pointer-events: auto;
+  touch-action: pan-y;
+}
+
+.globe-scroll-edge-left {
+  left: 0;
+}
+
+.globe-scroll-edge-right {
+  right: 0;
+}
+
+@media (max-width: 640px) {
+  .globe-scroll-edge {
+    width: 110px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

@@ -9,6 +9,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ckwrik-travel.vercel.app'),
+
   // Basic info
   title: {
     default: "C.K.Wrik's Travel Blog - Exploring the World",
@@ -33,13 +35,17 @@ export const metadata: Metadata = {
   authors: [{ name: 'Wrik Steven Sen' }],
   creator: 'Wrik Steven Sen',
 
+  alternates: {
+    canonical: 'https://ckwrik-travel.vercel.app',
+  },
+
   // Open Graph
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://ckwrik-travel.vercel.app',
     siteName: "C.K.Wrik's Travel Blog",
-    title: "C.K.Wrik's Travel Blog - Exploring the World",
+    title: "C.K.Wrik's Travel Blog - Exploring the World", 
     description: 'Join me on my journey across the globe. Explore travel stories, photos, and experiences from countries around the world.',
     images: [
       {
@@ -86,6 +92,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body className={inter.className}>
         <Header />
         

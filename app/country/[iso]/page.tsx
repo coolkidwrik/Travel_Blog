@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
   
   if (!countryData) {
     return {
-      title: "Country - C.K.Wrik's Travel Blog",
+      title: "Travel Guide",
       description: 'Explore travel stories and experiences from around the world.',
     };
   }
@@ -71,9 +71,15 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
     : '/images/default-og-image.jpg';
 
   return {
+    metadataBase: new URL('https://ckwrik-travel.vercel.app'),
+
     // Basic metadata
-    title: `${countryData.name} - C.K.Wrik's Travel Blog`,
+    title: `${countryData.name} Travel Guide & Experience`,
     description: description,
+
+    alternates: {
+      canonical: `https://ckwrik-travel.vercel.app/country/${iso}`,
+    },
     
     // Keywords for SEO
     keywords: [
@@ -94,7 +100,7 @@ export async function generateMetadata({ params }: { params: Promise<{ iso: stri
     
     // Open Graph (Facebook, LinkedIn)
     openGraph: {
-      title: `${countryData.name} - C.K.Wrik's Travel Blog`,
+      title: `${countryData.name} Travel Guide & Experience`,
       description: description,
       url: `https://ckwrik-travel.vercel.app/country/${iso}`,
       siteName: "C.K.Wrik's Travel Blog",
