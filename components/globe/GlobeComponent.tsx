@@ -43,6 +43,23 @@ export default function GlobeComponent({
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative', background: '#000' }}>
+      {/* Invisible side bars to capture scroll when cursor is over the canvas */}
+      <div
+        className="globe-scroll-edge globe-scroll-edge-left"
+        // left invisible verticle bar to capture scroll and scroll the page
+        // code below not required and gives errors
+        // only empty div with classNames required
+        ////////////////////////////////////////////////////////////
+        // onWheel={(e) => {
+        //   e.preventDefault();
+        //   e.stopPropagation();
+        //   window.scrollBy({ top: e.deltaY, left: 0, behavior: 'auto' });
+        // }}
+      />
+      <div
+        className="globe-scroll-edge globe-scroll-edge-right"
+        // left invisible verticle bar to capture scroll and scroll the page
+      />
       {/* Selected Country Overlay - Top Right */}
       <div
         style={{
