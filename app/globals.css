@@ -42,7 +42,7 @@ img, picture, video, iframe {
 
 @media (max-width: 640px) {
   .globe-scroll-edge {
-    width: 110px;
+    width: 90px;
   }
 }
 
