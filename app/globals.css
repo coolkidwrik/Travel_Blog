@@ -25,7 +25,7 @@ img, picture, video, iframe {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 256px;
+  width: 180px;
   z-index: 2;
   background: transparent;
   pointer-events: auto;
