@@ -73,7 +73,7 @@ export default function TripContent({ data }: TripContentProps) {
                     />
                   </div>
                   {block.caption && (
-                    <p className="text-gray-200 text-base mt-4 text-center font-medium">
+                    <p className="text-gray-200 mt-4 text-center text-lg font-bold underline">
                       {block.caption}
                     </p>
                   )}
