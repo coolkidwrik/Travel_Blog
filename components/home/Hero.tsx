@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Aurora from '../aurora/Aurora';
 
 export default function Hero() {
   return (
@@ -12,6 +13,17 @@ export default function Hero() {
         priority
         quality={75}
       />
+
+      {/* Aurora */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        {/* colorStops={["#7cff67","#B19EEF","#5227FF"]}  */}
+        <Aurora
+          colorStops={["#aaf752", "#3b7af7", "#f49cf7"]}
+          blend={0.9}
+          amplitude={1.0}
+          speed={0.7}
+        />
+      </div>
       
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-linear-to-b from-black/0 via-black/5 to-black"></div>
