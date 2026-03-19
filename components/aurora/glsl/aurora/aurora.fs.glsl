@@ -1,4 +1,8 @@
 #version 300 es
+/* 
+The Following code is built and modified on the code from:
+https://reactbits.dev/backgrounds/aurora 
+*/
 precision highp float;
 
 uniform float uTime;
