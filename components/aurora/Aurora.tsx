@@ -1,4 +1,9 @@
 "use client";
+/* 
+The Following code is built and modified on the code from:
+https://reactbits.dev/backgrounds/aurora 
+*/
+
 import { useEffect, useRef } from "react";
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 
