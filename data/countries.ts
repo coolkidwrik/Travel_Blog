@@ -41,8 +41,8 @@ export const VISITED_COUNTRIES = [
   'AUT', // Austria
   'BHR', // Bahrain
   'KHM', // Cambodia
-  'CHN', // China
   'CZE', // Czechia
+  'HKG', // Hong Kong
   'HUN', // Hungary
   'IDN', // Indonesia
   'JPN', // Japan

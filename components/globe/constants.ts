@@ -17,6 +17,9 @@ string, { name: string, lat: number, lng: number }
     // asia
     SGP: { name: "Singapore", lat: 1.3521, lng: 103.8198 },
     BHR: {name: "Bahrain", lat: 26.0667, lng: 50.5577},
+        // SARS of China
+    HKG: { name: "Hong Kong", lat: 22.3193, lng: 114.1694 },
+    MAC: { name: "Macau", lat: 22.1987, lng: 113.5439 },
     // europe
     MCO: { name: "Monaco", lat: 43.7384, lng: 7.4246 },
     AND: { name: "Andorra", lat: 42.5063, lng: 1.5218 },
